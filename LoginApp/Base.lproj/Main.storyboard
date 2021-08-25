@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="LoginApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="LoginApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -37,6 +37,7 @@
                                 <state key="normal" title="Log In"/>
                                 <connections>
                                     <action selector="logInButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="WCu-tQ-TOD"/>
+                                    <segue destination="3QN-7U-WyG" kind="show" identifier="" id="kWf-P4-PVU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JKf-d1-nVF">
@@ -81,10 +82,10 @@
             </objects>
             <point key="canvasLocation" x="28.985507246376812" y="88.392857142857139"/>
         </scene>
-        <!--View Controller-->
+        <!--Welcome-->
         <scene sceneID="ZcF-zK-X1S">
             <objects>
-                <viewController id="3QN-7U-WyG" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="success" title="Welcome" modalPresentationStyle="fullScreen" id="3QN-7U-WyG" customClass="WelcomeUserViewController" customModule="LoginApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m25-kP-b9E">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -107,6 +108,10 @@
                                 <state key="normal" title="Log out">
                                     <color key="titleColor" red="0.98533803751060622" green="1" blue="0.97619248693475835" alpha="0.66723923456101186" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="logoutButtonPressed" destination="3QN-7U-WyG" eventType="touchUpInside" id="TAO-gF-BkQ"/>
+                                    <segue destination="XmW-h7-jUg" kind="unwind" unwindAction="unwindFor:" id="AAq-le-dgA"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qp6-br-MoU"/>
@@ -120,8 +125,14 @@
                             <constraint firstItem="xqP-Hm-4Lh" firstAttribute="centerX" secondItem="m25-kP-b9E" secondAttribute="centerX" id="rjf-eb-cHt"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="lu8-Cv-L8j"/>
+                    <connections>
+                        <outlet property="logoutButton" destination="xqP-Hm-4Lh" id="kAc-bZ-X8h"/>
+                        <outlet property="welcomeLabel" destination="kHV-MQ-k0W" id="0ei-8u-8xS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B9V-z5-wW5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="XmW-h7-jUg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="774" y="88"/>
         </scene>

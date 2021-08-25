@@ -7,8 +7,8 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class MainViewController: UIViewController {
+    
     @IBOutlet var loginTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     
@@ -21,10 +21,21 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        guard let succesWU = segue.destination as? WelcomeUserViewController else {return}
+        succesWU.loginTF = loginTextField.text
+        
+    }
+    
     @IBAction func logInButtonPressed() {
         if loginTextField.text == "Admin",
            passwordTextField.text == "Admin111" {
-            
+            return
         } else {
             let okButtonAction = UIAlertAction(
                 title: "OK",
@@ -70,6 +81,11 @@ class ViewController: UIViewController {
         )
         alert.addAction(okButtonAction)
         self.present(alert, animated: true)
+    }
+    
+    @IBAction func unwind(for segue: UIStoryboardSegue) {
+        loginTextField.text = ""
+        passwordTextField.text = ""
     }
     
 }
