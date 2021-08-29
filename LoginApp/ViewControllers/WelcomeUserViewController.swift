@@ -9,18 +9,14 @@ import UIKit
 
 class WelcomeUserViewController: UIViewController {
 
-    @IBOutlet var logoutButton: UIButton!
     @IBOutlet var welcomeLabel: UILabel!
     
-    var loginTF: String!
+    var user = ""
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        welcomeLabel.text = "Welcome, \(loginTF ?? "")!"
+        welcomeLabel.text = "Welcome, \(user)!"
     }
   
-    @IBAction func logoutButtonPressed() {
-        dismiss(animated: true)
-    }
 }
